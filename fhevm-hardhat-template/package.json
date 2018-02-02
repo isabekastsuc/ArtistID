@@ -1,0 +1,37 @@
+{
+  "name": "artistid-fhevm-hardhat",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf artifacts cache types",
+    "compile": "hardhat compile",
+    "deploy:localhost": "hardhat deploy --network localhost",
+    "deploy:sepolia": "hardhat deploy --network sepolia",
+    "test": "hardhat test",
+    "typechain": "hardhat typechain"
+  },
+  "dependencies": {
+    "@fhevm/solidity": "^0.8.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "@zama-fhe/oracle-solidity": "^0.1.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.8",
+    "@nomicfoundation/hardhat-ethers": "^3.0.7",
+    "@nomicfoundation/hardhat-verify": "^2.0.8",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
+    "chai": "^4.3.10",
+    "dotenv": "^17.2.3",
+    "ethers": "^6.13.4",
+    "hardhat": "^2.22.15",
+    "hardhat-deploy": "^0.12.4",
+    "hardhat-gas-reporter": "^2.2.3",
+    "rimraf": "^6.0.1",
+    "solidity-coverage": "^0.8.12",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^5.6.3"
+  }
+}

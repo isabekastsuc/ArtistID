@@ -18,23 +18,3 @@ function gen() {
   let abi = null;
 
   for (const net of networks) {
-    try {
-      const f = resolve(hhDeployments, `${net}/ArtistID.json`);
-      const j = readJson(f);
-      addressMap[net] = {
-        address: j.address,
-        chainId: j.chainId,
-        chainName: net,
-      };
-      abi = j.abi;
-    } catch {}
-  }
-
-  mkdirSync(dirname(outAbi), { recursive: true });
-  mkdirSync(dirname(outAddr), { recursive: true });
-
-  writeFileSync(
-    outAbi,
-    `export const ArtistIDABI = ${JSON.stringify({ abi }, null, 2)} as const;\n`
-  );
-  writeFileSync(

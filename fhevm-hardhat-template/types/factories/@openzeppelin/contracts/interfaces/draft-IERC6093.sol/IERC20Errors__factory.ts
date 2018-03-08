@@ -64,25 +64,3 @@ const _abi = [
   },
   {
     inputs: [
-      {
-        internalType: "address",
-        name: "receiver",
-        type: "address",
-      },
-    ],
-    name: "ERC20InvalidReceiver",
-    type: "error",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "sender",
-        type: "address",
-      },
-    ],
-    name: "ERC20InvalidSender",
-    type: "error",
-  },
-  {
-    inputs: [

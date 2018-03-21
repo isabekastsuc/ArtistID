@@ -65,3 +65,26 @@ export class Strings__factory extends ContractFactory {
 
   override getDeployTransaction(
     overrides?: NonPayableOverrides & { from?: string }
+  ): Promise<ContractDeployTransaction> {
+    return super.getDeployTransaction(overrides || {});
+  }
+  override deploy(overrides?: NonPayableOverrides & { from?: string }) {
+    return super.deploy(overrides || {}) as Promise<
+      Strings & {
+        deploymentTransaction(): ContractTransactionResponse;
+      }
+    >;
+  }
+  override connect(runner: ContractRunner | null): Strings__factory {
+    return super.connect(runner) as Strings__factory;
+  }
+
+  static readonly bytecode = _bytecode;
+  static readonly abi = _abi;
+  static createInterface(): StringsInterface {
+    return new Interface(_abi) as StringsInterface;
+  }
+  static connect(address: string, runner?: ContractRunner | null): Strings {
+    return new Contract(address, _abi, runner) as unknown as Strings;
+  }
+}

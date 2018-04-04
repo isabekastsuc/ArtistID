@@ -30,19 +30,3 @@ jobs:
           cache: 'npm'
           cache-dependency-path: frontend/package-lock.json
 
-      - name: Install dependencies
-        working-directory: frontend
-        run: npm ci --no-audit --no-fund
-
-      - name: Build static site
-        working-directory: frontend
-        env:
-          NODE_ENV: production
-        run: npm run build
-
-      - name: Ensure .nojekyll in artifact root
-        working-directory: frontend
-        run: |
-          touch out/.nojekyll
-
-      - name: Upload artifact

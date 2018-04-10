@@ -11,8 +11,3 @@ const nextConfig: NextConfig = {
   assetPrefix: isProd ? "/artistID/" : undefined,
   // Avoid 404s on GitHub Pages by generating trailing slash paths
   trailingSlash: true,
-  // Silence deprecation by moving to turbopack top-level key
-  turbopack: {
-    // keep default
-  },
-};

@@ -8,3 +8,13 @@ import type {
   ERC165Interface,
 } from "../../../../../@openzeppelin/contracts/utils/introspection/ERC165";
 
+const _abi = [
+  {
+    inputs: [
+      {
+        internalType: "bytes4",
+        name: "interfaceId",
+        type: "bytes4",
+      },
+    ],
+    name: "supportsInterface",

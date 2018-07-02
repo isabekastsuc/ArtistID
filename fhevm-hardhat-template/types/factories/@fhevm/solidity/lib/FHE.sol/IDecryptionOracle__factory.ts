@@ -22,15 +22,3 @@ const _abi = [
         type: "bytes32[]",
       },
       {
-        internalType: "bytes4",
-        name: "callbackSelector",
-        type: "bytes4",
-      },
-    ],
-    name: "requestDecryption",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-] as const;
-

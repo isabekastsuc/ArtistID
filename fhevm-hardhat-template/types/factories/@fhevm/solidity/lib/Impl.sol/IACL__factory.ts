@@ -58,3 +58,64 @@ const _abi = [
     stateMutability: "nonpayable",
     type: "function",
   },
+  {
+    inputs: [],
+    name: "cleanTransientStorage",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "handle",
+        type: "bytes32",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+    ],
+    name: "isAllowed",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "handle",
+        type: "bytes32",
+      },
+    ],
+    name: "isAllowedForDecryption",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export class IACL__factory {
+  static readonly abi = _abi;
+  static createInterface(): IACLInterface {
+    return new Interface(_abi) as IACLInterface;
+  }
+  static connect(address: string, runner?: ContractRunner | null): IACL {
+    return new Contract(address, _abi, runner) as unknown as IACL;
+  }
+}

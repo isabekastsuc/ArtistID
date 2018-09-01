@@ -37,3 +37,42 @@ const _abi = [
         internalType: "int256",
         name: "value",
         type: "int256",
+      },
+    ],
+    name: "SafeCastOverflowedIntToUint",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint8",
+        name: "bits",
+        type: "uint8",
+      },
+      {
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "SafeCastOverflowedUintDowncast",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "SafeCastOverflowedUintToInt",
+    type: "error",
+  },
+] as const;
+
+const _bytecode =
+  "0x602c6032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea164736f6c634300081b000a";
+
+type SafeCastConstructorParams =
+  | [signer?: Signer]

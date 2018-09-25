@@ -62,25 +62,3 @@ export interface IKMSVerifier extends BaseContract {
   ): Promise<this>;
 
   once<TCEvent extends TypedContractEvent>(
-    event: TCEvent,
-    listener: TypedListener<TCEvent>
-  ): Promise<this>;
-  once<TCEvent extends TypedContractEvent>(
-    filter: TypedDeferredTopicFilter<TCEvent>,
-    listener: TypedListener<TCEvent>
-  ): Promise<this>;
-
-  listeners<TCEvent extends TypedContractEvent>(
-    event: TCEvent
-  ): Promise<Array<TypedListener<TCEvent>>>;
-  listeners(eventName?: string): Promise<Array<Listener>>;
-  removeAllListeners<TCEvent extends TypedContractEvent>(
-    event?: TCEvent
-  ): Promise<this>;
-
-  verifyDecryptionEIP712KMSSignatures: TypedContractMethod<
-    [
-      handlesList: BytesLike[],
-      decryptedResult: BytesLike,
-      decryptionProof: BytesLike
-    ],

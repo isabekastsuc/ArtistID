@@ -25,3 +25,87 @@ contract ArtistID is ERC721, Ownable, SepoliaConfig {
     /// @dev tokenId -> profile
     mapping(uint256 => ArtistProfile) internal _profiles;
 
+    /// @dev 全局计数：使用 FHE 加密存储，演示链上同态运算（如注册数、验证通过次数等）
+    euint32 private _encryptedTotalArtists;
+
+    /// @dev 每位艺术家一个“加密积分”示例（如认证强度），展示 allow/解密与加法
+    mapping(uint256 => euint32) private _encryptedReputationOf;
+
+    uint256 public totalArtists; // 明文计数（辅助索引）
+
+    event ArtistRegistered(address indexed artist, uint256 tokenId);
+
+    constructor() ERC721("ArtistID", "AID") Ownable(msg.sender) {}
+
+    // ------------------------------------------------------------
+    // 注册与资料
+    // ------------------------------------------------------------
+    function registerArtist(
+        string memory name_,
+        string memory bio_,
+        string memory portfolioURI_,
+        string memory category_
+    ) external returns (uint256 tokenId) {
+        require(!registered[msg.sender], "Already registered");
+
+        tokenId = ++totalArtists;
+        registered[msg.sender] = true;
+        tokenIdOf[msg.sender] = tokenId;
+
+        _safeMint(msg.sender, tokenId);
+
+        _profiles[tokenId] = ArtistProfile({
+            name: name_,
+            bio: bio_,
+            portfolioURI: portfolioURI_,
+            category: category_,
+            createdAt: block.timestamp,
+            wallet: msg.sender
+        });
+
+        // 初始化艺术家“加密积分”为 0，并授权给合约与调用者
+        _encryptedReputationOf[tokenId] = FHE.asEuint32(0);
+        FHE.allowThis(_encryptedReputationOf[tokenId]);
+        FHE.allow(_encryptedReputationOf[tokenId], msg.sender);
+
+        // 全局加密计数 +1（演示同态加法 + 标量）
+        _encryptedTotalArtists = FHE.add(_encryptedTotalArtists, 1);
+        FHE.allowThis(_encryptedTotalArtists);
+
+        emit ArtistRegistered(msg.sender, tokenId);
+    }
+
+    function getArtistProfile(address user) external view returns (ArtistProfile memory) {
+        uint256 tokenId = tokenIdOf[user];
+        require(tokenId != 0, "Not registered");
+        return _profiles[tokenId];
+    }
+
+    function tokenProfile(uint256 tokenId) external view returns (ArtistProfile memory) {
+        require(_ownerOf(tokenId) != address(0), "Invalid tokenId");
+        return _profiles[tokenId];
+    }
+
+    function isArtist(address user) external view returns (bool) {
+        return registered[user];
+    }
+
+    // ------------------------------------------------------------
+    // FHE 示例：加密积分增减（外部密文输入 + 证明）
+    // ------------------------------------------------------------
+    function addReputation(
+        uint256 tokenId,
+        externalEuint32 valueHandle,
+        bytes calldata inputProof
+    ) external {
+        require(_ownerOf(tokenId) != address(0), "Invalid tokenId");
+        require(ownerOf(tokenId) == msg.sender, "Only owner");
+
+        euint32 v = FHE.fromExternal(valueHandle, inputProof);
+        _encryptedReputationOf[tokenId] = FHE.add(_encryptedReputationOf[tokenId], v);
+
+        // 授权合约和调用者可解密当前值（示例）
+        FHE.allowThis(_encryptedReputationOf[tokenId]);
+        FHE.allow(_encryptedReputationOf[tokenId], msg.sender);
+    }
+

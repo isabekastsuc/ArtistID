@@ -16,21 +16,3 @@ import type {
 
 const _abi = [
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "length",
-        type: "uint256",
-      },
-    ],
-    name: "StringsInsufficientHexLength",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "StringsInvalidAddressFormat",

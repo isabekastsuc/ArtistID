@@ -22,3 +22,28 @@ const config: HardhatUserConfig = {
   namedAccounts: { deployer: 0 },
   etherscan: { apiKey: { sepolia: ETHERSCAN_API_KEY } },
   gasReporter: { currency: "USD", enabled: !!process.env.REPORT_GAS },
+  networks: {
+    hardhat: {
+      chainId: 31337,
+      accounts: { mnemonic: MNEMONIC },
+    },
+    localhost: {
+      chainId: 31337,
+      url: "http://127.0.0.1:8545",
+      accounts: { mnemonic: MNEMONIC },
+    },
+    sepolia: {
+      chainId: 11155111,
+      url: SEPOLIA_RPC_URL,
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : { mnemonic: MNEMONIC, path: "m/44'/60'/0'/0/", count: 10 },
+    },
+  },
+  paths: {
+    sources: "./contracts",
+    artifacts: "./artifacts",
+    cache: "./cache",
+    tests: "./test",
+    deploy: "./deploy",
+    deployments: "./deployments",
+  },
+  solidity: {

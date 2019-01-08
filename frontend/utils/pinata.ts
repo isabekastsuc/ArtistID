@@ -20,14 +20,3 @@ export async function uploadFileToPinata(parameters: {
     };
 
     xhr.onreadystatechange = () => {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status >= 200 && xhr.status < 300) {
-        try {
-          const json = JSON.parse(xhr.responseText);
-          const cid = json.IpfsHash as string;
-          const uri = `ipfs://${cid}`;
-          const gateway = `https://gateway.pinata.cloud/ipfs/${cid}`;
-          resolve({ cid, uri, gateway });
-        } catch (e) {
-          reject(e);
-        }

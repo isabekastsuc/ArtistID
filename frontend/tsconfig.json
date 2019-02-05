@@ -14,19 +14,3 @@
     "paths": {
       "@/abi/*": [
         "./abi/*"
-      ],
-      "@/fhevm/*": [
-        "./fhevm/*"
-      ],
-      "@/hooks/*": [
-        "./hooks/*"
-      ],
-      "@/utils/*": [
-        "./utils/*"
-      ]
-    },
-    "skipLibCheck": true,
-    "noEmit": true,
-    "incremental": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,

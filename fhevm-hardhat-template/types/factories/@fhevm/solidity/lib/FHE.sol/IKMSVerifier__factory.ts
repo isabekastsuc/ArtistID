@@ -25,30 +25,3 @@ const _abi = [
         internalType: "bytes",
         name: "decryptionProof",
         type: "bytes",
-      },
-    ],
-    name: "verifyDecryptionEIP712KMSSignatures",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-] as const;
-
-export class IKMSVerifier__factory {
-  static readonly abi = _abi;
-  static createInterface(): IKMSVerifierInterface {
-    return new Interface(_abi) as IKMSVerifierInterface;
-  }
-  static connect(
-    address: string,
-    runner?: ContractRunner | null
-  ): IKMSVerifier {
-    return new Contract(address, _abi, runner) as unknown as IKMSVerifier;
-  }
-}

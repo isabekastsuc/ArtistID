@@ -67,3 +67,38 @@ contract ArtistID is ERC721, Ownable, SepoliaConfig {
         _encryptedReputationOf[tokenId] = FHE.asEuint32(0);
         FHE.allowThis(_encryptedReputationOf[tokenId]);
         FHE.allow(_encryptedReputationOf[tokenId], msg.sender);
+
+        // 全局加密计数 +1（演示同态加法 + 标量）
+        _encryptedTotalArtists = FHE.add(_encryptedTotalArtists, 1);
+        FHE.allowThis(_encryptedTotalArtists);
+
+        emit ArtistRegistered(msg.sender, tokenId);
+    }
+
+    function getArtistProfile(address user) external view returns (ArtistProfile memory) {
+        uint256 tokenId = tokenIdOf[user];
+        require(tokenId != 0, "Not registered");
+        return _profiles[tokenId];
+    }
+
+    function tokenProfile(uint256 tokenId) external view returns (ArtistProfile memory) {
+        require(_ownerOf(tokenId) != address(0), "Invalid tokenId");
+        return _profiles[tokenId];
+    }
+
+    function isArtist(address user) external view returns (bool) {
+        return registered[user];
+    }
+
+    // ------------------------------------------------------------
+    // FHE 示例：加密积分增减（外部密文输入 + 证明）
+    // ------------------------------------------------------------
+    function addReputation(
+        uint256 tokenId,
+        externalEuint32 valueHandle,
+        bytes calldata inputProof
+    ) external {
+        require(_ownerOf(tokenId) != address(0), "Invalid tokenId");
+        require(ownerOf(tokenId) == msg.sender, "Only owner");
+
+        euint32 v = FHE.fromExternal(valueHandle, inputProof);

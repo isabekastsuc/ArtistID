@@ -81,31 +81,3 @@ const _abi = [
         type: "address",
       },
     ],
-    name: "ERC20InvalidSender",
-    type: "error",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "spender",
-        type: "address",
-      },
-    ],
-    name: "ERC20InvalidSpender",
-    type: "error",
-  },
-] as const;
-
-export class IERC20Errors__factory {
-  static readonly abi = _abi;
-  static createInterface(): IERC20ErrorsInterface {
-    return new Interface(_abi) as IERC20ErrorsInterface;
-  }
-  static connect(
-    address: string,
-    runner?: ContractRunner | null
-  ): IERC20Errors {
-    return new Contract(address, _abi, runner) as unknown as IERC20Errors;
-  }
-}

@@ -170,3 +170,89 @@ body {
 }
 
 .select-artistic {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  color: #f1f5f9;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.select-artistic:focus {
+  outline: none;
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.nft-stamp {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 5rem;
+  height: 5rem;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  text-align: center;
+  box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.5);
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  transform: rotate(12deg);
+  z-index: 10;
+}
+
+textarea.input-artistic {
+  resize: vertical;
+}
+
+/* Reveal helpers for Verify page */
+.card-clickable {
+  position: relative;
+  cursor: pointer;
+}
+
+.blurred {
+  filter: blur(12px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.reveal-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(2,6,23,0.3), rgba(2,6,23,0.6));
+  border-radius: 1rem;
+  color: #e2e8f0;
+}
+
+.reveal-overlay .lock {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(139,92,246,0.35);
+  margin-right: 10px;
+}
+
+.reveal-overlay .hint {
+  font-weight: 600;
+}

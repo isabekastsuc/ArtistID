@@ -21,27 +21,3 @@ function Navigation() {
           </Link>
           
           <div className="flex items-center space-x-8">
-            <Link href="/" className="text-slate-300 hover:text-white transition-colors font-medium">
-              Home
-            </Link>
-            <Link href="/register" className="text-slate-300 hover:text-white transition-colors font-medium">
-              Register
-            </Link>
-            <Link href="/profile" className="text-slate-300 hover:text-white transition-colors font-medium">
-              Profile
-            </Link>
-            <Link href="/verify" className="text-slate-300 hover:text-white transition-colors font-medium">
-              Verify
-            </Link>
-          </div>
-        </div>
-      </div>
-    </nav>
-  )
-}
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="zh-CN">
-      <body className="artistic-bg">
-        <Navigation />

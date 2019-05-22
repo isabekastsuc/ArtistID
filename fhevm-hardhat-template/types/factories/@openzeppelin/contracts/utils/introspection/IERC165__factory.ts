@@ -6,11 +6,3 @@ import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   IERC165,
   IERC165Interface,
-} from "../../../../../@openzeppelin/contracts/utils/introspection/IERC165";
-
-const _abi = [
-  {
-    inputs: [
-      {
-        internalType: "bytes4",
-        name: "interfaceId",

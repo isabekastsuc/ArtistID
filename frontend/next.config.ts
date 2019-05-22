@@ -13,11 +13,3 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   // Silence deprecation by moving to turbopack top-level key
   turbopack: {
-    // keep default
-  },
-};
-
-export default nextConfig;
-
-
-

@@ -15,3 +15,20 @@ import type {
   TypedEventLog,
   TypedListener,
 } from "../../../../common";
+
+export interface SafeCastInterface extends Interface {}
+
+export interface SafeCast extends BaseContract {
+  connect(runner?: ContractRunner | null): SafeCast;
+  waitForDeployment(): Promise<this>;
+
+  interface: SafeCastInterface;
+
+  queryFilter<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+  queryFilter<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    fromBlockOrBlockhash?: string | number | undefined,

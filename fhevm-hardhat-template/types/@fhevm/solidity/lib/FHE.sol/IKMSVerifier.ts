@@ -19,25 +19,3 @@ import type {
   TypedContractMethod,
 } from "../../../../common";
 
-export interface IKMSVerifierInterface extends Interface {
-  getFunction(
-    nameOrSignature: "verifyDecryptionEIP712KMSSignatures"
-  ): FunctionFragment;
-
-  encodeFunctionData(
-    functionFragment: "verifyDecryptionEIP712KMSSignatures",
-    values: [BytesLike[], BytesLike, BytesLike]
-  ): string;
-
-  decodeFunctionResult(
-    functionFragment: "verifyDecryptionEIP712KMSSignatures",
-    data: BytesLike
-  ): Result;
-}
-
-export interface IKMSVerifier extends BaseContract {
-  connect(runner?: ContractRunner | null): IKMSVerifier;
-  waitForDeployment(): Promise<this>;
-
-  interface: IKMSVerifierInterface;
-

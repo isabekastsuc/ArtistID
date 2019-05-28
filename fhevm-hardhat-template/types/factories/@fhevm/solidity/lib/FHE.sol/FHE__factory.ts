@@ -28,34 +28,3 @@ const _abi = [
   {
     inputs: [],
     name: "NoHandleFoundForRequestID",
-    type: "error",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "requestID",
-        type: "uint256",
-      },
-    ],
-    name: "DecryptionFulfilled",
-    type: "event",
-  },
-] as const;
-
-const _bytecode =
-  "0x602c6032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea164736f6c634300081b000a";
-
-type FHEConstructorParams =
-  | [signer?: Signer]
-  | ConstructorParameters<typeof ContractFactory>;
-
-const isSuperArgs = (
-  xs: FHEConstructorParams
-): xs is ConstructorParameters<typeof ContractFactory> => xs.length > 1;
-
-export class FHE__factory extends ContractFactory {
-  constructor(...args: FHEConstructorParams) {
-    if (isSuperArgs(args)) {

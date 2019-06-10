@@ -6,7 +6,3 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "outDir": "dist"
-  },
-  "include": ["./deploy", "./scripts", "./test", "./hardhat.config.ts"],

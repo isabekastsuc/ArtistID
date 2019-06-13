@@ -31,20 +31,3 @@ function gen() {
   }
 
   mkdirSync(dirname(outAbi), { recursive: true });
-  mkdirSync(dirname(outAddr), { recursive: true });
-
-  writeFileSync(
-    outAbi,
-    `export const ArtistIDABI = ${JSON.stringify({ abi }, null, 2)} as const;\n`
-  );
-  writeFileSync(
-    outAddr,
-    `export const ArtistIDAddresses = ${JSON.stringify(addressMap, null, 2)} as const;\n`
-  );
-  console.log("ABI and addresses generated.");
-}
-
-gen();
-
-
-

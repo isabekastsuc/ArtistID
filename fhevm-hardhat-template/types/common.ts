@@ -63,3 +63,69 @@ export type TypedListener<TCEvent extends TypedContractEvent> = (
 
 export type MinEthersFactory<C, ARGS> = {
   deploy(...a: ARGS[]): Promise<C>;
+};
+
+export type GetContractTypeFromFactory<F> = F extends MinEthersFactory<
+  infer C,
+  any
+>
+  ? C
+  : never;
+export type GetARGsTypeFromFactory<F> = F extends MinEthersFactory<any, any>
+  ? Parameters<F["deploy"]>
+  : never;
+
+export type StateMutability = "nonpayable" | "payable" | "view";
+
+export type BaseOverrides = Omit<TransactionRequest, "to" | "data">;
+export type NonPayableOverrides = Omit<
+  BaseOverrides,
+  "value" | "blockTag" | "enableCcipRead"
+>;
+export type PayableOverrides = Omit<
+  BaseOverrides,
+  "blockTag" | "enableCcipRead"
+>;
+export type ViewOverrides = Omit<TransactionRequest, "to" | "data">;
+export type Overrides<S extends StateMutability> = S extends "nonpayable"
+  ? NonPayableOverrides
+  : S extends "payable"
+  ? PayableOverrides
+  : ViewOverrides;
+
+export type PostfixOverrides<A extends Array<any>, S extends StateMutability> =
+  | A
+  | [...A, Overrides<S>];
+export type ContractMethodArgs<
+  A extends Array<any>,
+  S extends StateMutability
+> = PostfixOverrides<{ [I in keyof A]-?: A[I] | Typed }, S>;
+
+export type DefaultReturnType<R> = R extends Array<any> ? R[0] : R;
+
+// export interface ContractMethod<A extends Array<any> = Array<any>, R = any, D extends R | ContractTransactionResponse = R | ContractTransactionResponse> {
+export interface TypedContractMethod<
+  A extends Array<any> = Array<any>,
+  R = any,
+  S extends StateMutability = "payable"
+> {
+  (...args: ContractMethodArgs<A, S>): S extends "view"
+    ? Promise<DefaultReturnType<R>>
+    : Promise<ContractTransactionResponse>;
+
+  name: string;
+
+  fragment: FunctionFragment;
+
+  getFragment(...args: ContractMethodArgs<A, S>): FunctionFragment;
+
+  populateTransaction(
+    ...args: ContractMethodArgs<A, S>
+  ): Promise<ContractTransaction>;
+  staticCall(
+    ...args: ContractMethodArgs<A, "view">
+  ): Promise<DefaultReturnType<R>>;
+  send(...args: ContractMethodArgs<A, S>): Promise<ContractTransactionResponse>;
+  estimateGas(...args: ContractMethodArgs<A, S>): Promise<bigint>;
+  staticCallResult(...args: ContractMethodArgs<A, "view">): Promise<R>;
+}

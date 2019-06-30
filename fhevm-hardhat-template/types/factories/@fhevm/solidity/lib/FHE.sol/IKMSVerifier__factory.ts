@@ -16,21 +16,3 @@ const _abi = [
         name: "handlesList",
         type: "bytes32[]",
       },
-      {
-        internalType: "bytes",
-        name: "decryptedResult",
-        type: "bytes",
-      },
-      {
-        internalType: "bytes",
-        name: "decryptionProof",
-        type: "bytes",
-      },
-    ],
-    name: "verifyDecryptionEIP712KMSSignatures",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },

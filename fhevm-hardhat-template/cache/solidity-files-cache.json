@@ -796,3 +796,269 @@
     "/Users/toolboxb/Desktop/ZAMA/十月项目/艺术家身份验证/action/fhevm-hardhat-template/node_modules/@openzeppelin/contracts/utils/math/SignedMath.sol": {
       "lastModificationDate": 1760596107194,
       "contentHash": "ae3528afb8bdb0a7dcfba5b115ee8074",
+      "sourceName": "@openzeppelin/contracts/utils/math/SignedMath.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 800
+          },
+          "evmVersion": "cancun",
+          "metadata": {
+            "bytecodeHash": "none",
+            "useLiteralContent": true
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SignedMath"
+      ]
+    },
+    "/Users/toolboxb/Desktop/ZAMA/十月项目/艺术家身份验证/action/fhevm-hardhat-template/node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol": {
+      "lastModificationDate": 1760596107184,
+      "contentHash": "2adca1150f58fc6f3d1f0a0f22ee7cca",
+      "sourceName": "@openzeppelin/contracts/utils/math/SafeCast.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 800
+          },
+          "evmVersion": "cancun",
+          "metadata": {
+            "bytecodeHash": "none",
+            "useLiteralContent": true
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SafeCast"
+      ]
+    },
+    "/Users/toolboxb/Desktop/ZAMA/十月项目/艺术家身份验证/action/fhevm-hardhat-template/node_modules/@openzeppelin/contracts/utils/Panic.sol": {
+      "lastModificationDate": 1760596107175,
+      "contentHash": "2133dc13536b4a6a98131e431fac59e1",
+      "sourceName": "@openzeppelin/contracts/utils/Panic.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 800
+          },
+          "evmVersion": "cancun",
+          "metadata": {
+            "bytecodeHash": "none",
+            "useLiteralContent": true
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Panic"
+      ]
+    },
+    "/Users/toolboxb/Desktop/ZAMA/十月项目/艺术家身份验证/action/fhevm-hardhat-template/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+      "lastModificationDate": 1760596107091,
+      "contentHash": "7074c93b1ea0a122063f26ddd1db1032",
+      "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 800
+          },
+          "evmVersion": "cancun",
+          "metadata": {
+            "bytecodeHash": "none",
+            "useLiteralContent": true
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.16"
+      ],
+      "artifacts": [
+        "IERC165"
+      ]
+    },
+    "/Users/toolboxb/Desktop/ZAMA/十月项目/艺术家身份验证/action/fhevm-hardhat-template/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+      "lastModificationDate": 1760596107126,
+      "contentHash": "d61660a41ce200e99816e4734f7fd202",
+      "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 800
+          },
+          "evmVersion": "cancun",
+          "metadata": {
+            "bytecodeHash": "none",
+            "useLiteralContent": true
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "IERC721Receiver"
+      ]
+    },
+    "/Users/toolboxb/Desktop/ZAMA/十月项目/艺术家身份验证/action/fhevm-hardhat-template/contracts/Dependencies.sol": {
+      "lastModificationDate": 1760595097908,
+      "contentHash": "a936629dce132eac73c350315cb569b3",
+      "sourceName": "contracts/Dependencies.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 800
+          },
+          "evmVersion": "cancun",
+          "metadata": {
+            "bytecodeHash": "none",
+            "useLiteralContent": true
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": []
+    }
+  }
+}

@@ -35,15 +35,3 @@ const config: HardhatUserConfig = {
     sepolia: {
       chainId: 11155111,
       url: SEPOLIA_RPC_URL,
-      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : { mnemonic: MNEMONIC, path: "m/44'/60'/0'/0/", count: 10 },
-    },
-  },
-  paths: {
-    sources: "./contracts",
-    artifacts: "./artifacts",
-    cache: "./cache",
-    tests: "./test",
-    deploy: "./deploy",
-    deployments: "./deployments",
-  },
-  solidity: {

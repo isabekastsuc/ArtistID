@@ -27,32 +27,3 @@ export interface EthereumConfigInterface extends Interface {
     values?: undefined
   ): string;
 
-  decodeFunctionResult(functionFragment: "protocolId", data: BytesLike): Result;
-}
-
-export interface EthereumConfig extends BaseContract {
-  connect(runner?: ContractRunner | null): EthereumConfig;
-  waitForDeployment(): Promise<this>;
-
-  interface: EthereumConfigInterface;
-
-  queryFilter<TCEvent extends TypedContractEvent>(
-    event: TCEvent,
-    fromBlockOrBlockhash?: string | number | undefined,
-    toBlock?: string | number | undefined
-  ): Promise<Array<TypedEventLog<TCEvent>>>;
-  queryFilter<TCEvent extends TypedContractEvent>(
-    filter: TypedDeferredTopicFilter<TCEvent>,
-    fromBlockOrBlockhash?: string | number | undefined,
-    toBlock?: string | number | undefined
-  ): Promise<Array<TypedEventLog<TCEvent>>>;
-
-  on<TCEvent extends TypedContractEvent>(
-    event: TCEvent,
-    listener: TypedListener<TCEvent>
-  ): Promise<this>;
-  on<TCEvent extends TypedContractEvent>(
-    filter: TypedDeferredTopicFilter<TCEvent>,
-    listener: TypedListener<TCEvent>
-  ): Promise<this>;
-

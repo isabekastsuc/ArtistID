@@ -8,3 +8,14 @@ import type {
   IInputVerifierInterface,
 } from "../../../../../@fhevm/solidity/lib/Impl.sol/IInputVerifier";
 
+const _abi = [
+  {
+    inputs: [],
+    name: "cleanTransientStorage",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+] as const;
+
+export class IInputVerifier__factory {

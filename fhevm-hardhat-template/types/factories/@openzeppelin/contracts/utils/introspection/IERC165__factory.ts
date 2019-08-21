@@ -25,3 +25,17 @@ const _abi = [
         type: "bool",
       },
     ],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export class IERC165__factory {
+  static readonly abi = _abi;
+  static createInterface(): IERC165Interface {
+    return new Interface(_abi) as IERC165Interface;
+  }
+  static connect(address: string, runner?: ContractRunner | null): IERC165 {
+    return new Contract(address, _abi, runner) as unknown as IERC165;
+  }
+}

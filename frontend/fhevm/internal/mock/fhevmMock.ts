@@ -6,12 +6,3 @@ export async function fhevmMockCreateInstance({ rpcUrl }: { rpcUrl: string }) {
   // 尝试读取 FHEVM relayer metadata，如果不可用，使用默认本地预设
   try {
     const meta = await provider.send("fhevm_relayer_metadata", []);
-    const instance = await MockFhevmInstance.create(provider, provider, {
-      aclContractAddress: meta.ACLAddress,
-      inputVerifierContractAddress: meta.InputVerifierAddress,
-      kmsContractAddress: meta.KMSVerifierAddress,
-      chainId: Number((await provider.getNetwork()).chainId),
-      gatewayChainId: 55815,
-      verifyingContractAddressDecryption: meta.VerifyingContractDecryption ?? "0x5ffdaAB0373E62E2ea2944776209aEf29E631A64",
-      verifyingContractAddressInputVerification: meta.VerifyingContractInput ?? "0x812b06e1CDCE800494b79fFE4f925A504a9A9810",
-    });

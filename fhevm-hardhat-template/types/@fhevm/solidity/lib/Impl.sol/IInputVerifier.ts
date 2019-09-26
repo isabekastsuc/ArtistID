@@ -28,3 +28,33 @@ export interface IInputVerifierInterface extends Interface {
   ): string;
 
   decodeFunctionResult(
+    functionFragment: "cleanTransientStorage",
+    data: BytesLike
+  ): Result;
+}
+
+export interface IInputVerifier extends BaseContract {
+  connect(runner?: ContractRunner | null): IInputVerifier;
+  waitForDeployment(): Promise<this>;
+
+  interface: IInputVerifierInterface;
+
+  queryFilter<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+  queryFilter<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+
+  on<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  on<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;

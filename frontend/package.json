@@ -6,3 +6,12 @@
   "scripts": {
     "clean": "rimraf .next",
     "dev": "npm run genabi && next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "genabi": "node ./scripts/genabi.mjs",
+    "export": "next build"
+  },
+  "dependencies": {
+    "@zama-fhe/relayer-sdk": "0.2.0",
+    "ethers": "^6.13.4",
+    "idb": "^8.0.3",

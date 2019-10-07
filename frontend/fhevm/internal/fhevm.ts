@@ -13,3 +13,11 @@ const isSepolia = async (providerOrUrl: Eip1193Provider | string) => {
   const hex = (await providerOrUrl.request({ method: "eth_chainId" })) as string;
   return parseInt(hex, 16) === 11155111;
 };
+
+export async function createFhevmInstance(providerOrUrl: Eip1193Provider | string): Promise<FhevmInstance> {
+  // 31337 走本地 Mock，11155111 走 Relayer SDK
+  const loader = new RelayerSDKLoader();
+  const sepolia = await isSepolia(providerOrUrl);
+
+  if (sepolia) {
+    await loader.load();

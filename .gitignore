@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+frontend/.next/
+frontend/out/
+frontend/.env.local
+frontend/.vercel/

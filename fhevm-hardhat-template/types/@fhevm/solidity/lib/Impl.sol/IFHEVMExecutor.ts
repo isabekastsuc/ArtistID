@@ -122,3 +122,128 @@ export interface IFHEVMExecutorInterface extends Interface {
   encodeFunctionData(functionFragment: "fheNeg", values: [BytesLike]): string;
   encodeFunctionData(functionFragment: "fheNot", values: [BytesLike]): string;
   encodeFunctionData(
+    functionFragment: "fheRand",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "fheRandBounded",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "fheRem",
+    values: [BytesLike, BytesLike, BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "fheRotl",
+    values: [BytesLike, BytesLike, BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "fheRotr",
+    values: [BytesLike, BytesLike, BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "fheShl",
+    values: [BytesLike, BytesLike, BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "fheShr",
+    values: [BytesLike, BytesLike, BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "fheSub",
+    values: [BytesLike, BytesLike, BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getInputVerifierAddress",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "trivialEncrypt",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "verifyCiphertext",
+    values: [BytesLike, AddressLike, BytesLike, BigNumberish]
+  ): string;
+
+  decodeFunctionResult(functionFragment: "cast", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheAdd", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheBitAnd", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheBitOr", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheBitXor", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheDiv", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheEq", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheGe", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheGt", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "fheIfThenElse",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "fheLe", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheLt", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheMax", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheMin", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheMul", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheNe", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheNeg", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheNot", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheRand", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "fheRandBounded",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "fheRem", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheRotl", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheRotr", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheShl", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheShr", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "fheSub", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getInputVerifierAddress",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "trivialEncrypt",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "verifyCiphertext",
+    data: BytesLike
+  ): Result;
+}
+
+export interface IFHEVMExecutor extends BaseContract {
+  connect(runner?: ContractRunner | null): IFHEVMExecutor;
+  waitForDeployment(): Promise<this>;
+
+  interface: IFHEVMExecutorInterface;
+
+  queryFilter<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+  queryFilter<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+
+  on<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  on<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+
+  once<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  once<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+

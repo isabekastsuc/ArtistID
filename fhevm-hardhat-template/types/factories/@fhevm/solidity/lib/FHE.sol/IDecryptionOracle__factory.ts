@@ -10,15 +10,3 @@ import type {
 
 const _abi = [
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "requestID",
-        type: "uint256",
-      },
-      {
-        internalType: "bytes32[]",
-        name: "ctsHandles",
-        type: "bytes32[]",
-      },
-      {

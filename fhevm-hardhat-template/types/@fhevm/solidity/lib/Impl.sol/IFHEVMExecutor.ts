@@ -247,3 +247,252 @@ export interface IFHEVMExecutor extends BaseContract {
     listener: TypedListener<TCEvent>
   ): Promise<this>;
 
+  listeners<TCEvent extends TypedContractEvent>(
+    event: TCEvent
+  ): Promise<Array<TypedListener<TCEvent>>>;
+  listeners(eventName?: string): Promise<Array<Listener>>;
+  removeAllListeners<TCEvent extends TypedContractEvent>(
+    event?: TCEvent
+  ): Promise<this>;
+
+  cast: TypedContractMethod<
+    [ct: BytesLike, toType: BigNumberish],
+    [string],
+    "nonpayable"
+  >;
+
+  fheAdd: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheBitAnd: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheBitOr: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheBitXor: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheDiv: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheEq: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheGe: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheGt: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheIfThenElse: TypedContractMethod<
+    [control: BytesLike, ifTrue: BytesLike, ifFalse: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheLe: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheLt: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheMax: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheMin: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheMul: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheNe: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheNeg: TypedContractMethod<[ct: BytesLike], [string], "nonpayable">;
+
+  fheNot: TypedContractMethod<[ct: BytesLike], [string], "nonpayable">;
+
+  fheRand: TypedContractMethod<
+    [randType: BigNumberish],
+    [string],
+    "nonpayable"
+  >;
+
+  fheRandBounded: TypedContractMethod<
+    [upperBound: BigNumberish, randType: BigNumberish],
+    [string],
+    "nonpayable"
+  >;
+
+  fheRem: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheRotl: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheRotr: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheShl: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheShr: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  fheSub: TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+
+  getInputVerifierAddress: TypedContractMethod<[], [string], "view">;
+
+  trivialEncrypt: TypedContractMethod<
+    [ct: BigNumberish, toType: BigNumberish],
+    [string],
+    "nonpayable"
+  >;
+
+  verifyCiphertext: TypedContractMethod<
+    [
+      inputHandle: BytesLike,
+      callerAddress: AddressLike,
+      inputProof: BytesLike,
+      inputType: BigNumberish
+    ],
+    [string],
+    "nonpayable"
+  >;
+
+  getFunction<T extends ContractMethod = ContractMethod>(
+    key: string | FunctionFragment
+  ): T;
+
+  getFunction(
+    nameOrSignature: "cast"
+  ): TypedContractMethod<
+    [ct: BytesLike, toType: BigNumberish],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "fheAdd"
+  ): TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "fheBitAnd"
+  ): TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "fheBitOr"
+  ): TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "fheBitXor"
+  ): TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "fheDiv"
+  ): TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "fheEq"
+  ): TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "fheGe"
+  ): TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "fheGt"
+  ): TypedContractMethod<
+    [lhs: BytesLike, rhs: BytesLike, scalarByte: BytesLike],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "fheIfThenElse"
+  ): TypedContractMethod<
+    [control: BytesLike, ifTrue: BytesLike, ifFalse: BytesLike],
+    [string],
+    "nonpayable"
+  >;

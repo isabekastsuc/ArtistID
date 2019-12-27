@@ -9,15 +9,3 @@ import type {
 } from "../../../../../@openzeppelin/contracts/token/ERC721/IERC721Receiver";
 
 const _abi = [
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "operator",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "from",
-        type: "address",
-      },

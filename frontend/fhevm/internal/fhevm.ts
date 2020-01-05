@@ -21,3 +21,11 @@ export async function createFhevmInstance(providerOrUrl: Eip1193Provider | strin
 
   if (sepolia) {
     await loader.load();
+    const sdk: any = (window as any).relayerSDK;
+    await sdk.initSDK();
+    const instance = await sdk.createInstance({
+      ...sdk.SepoliaConfig,
+      network: providerOrUrl,
+    });
+    return instance;
+  }

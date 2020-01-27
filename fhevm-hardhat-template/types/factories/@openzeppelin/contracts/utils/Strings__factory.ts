@@ -16,39 +16,3 @@ import type {
 
 const _abi = [
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "length",
-        type: "uint256",
-      },
-    ],
-    name: "StringsInsufficientHexLength",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "StringsInvalidAddressFormat",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "StringsInvalidChar",
-    type: "error",
-  },
-] as const;
-
-const _bytecode =
-  "0x602c6032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea164736f6c634300081b000a";
-
-type StringsConstructorParams =
-  | [signer?: Signer]
-  | ConstructorParameters<typeof ContractFactory>;
-
-const isSuperArgs = (
-  xs: StringsConstructorParams

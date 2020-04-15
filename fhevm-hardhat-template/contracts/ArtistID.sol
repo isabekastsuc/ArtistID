@@ -102,3 +102,38 @@ contract ArtistID is ERC721, Ownable, SepoliaConfig {
         require(ownerOf(tokenId) == msg.sender, "Only owner");
 
         euint32 v = FHE.fromExternal(valueHandle, inputProof);
+        _encryptedReputationOf[tokenId] = FHE.add(_encryptedReputationOf[tokenId], v);
+
+        // 授权合约和调用者可解密当前值（示例）
+        FHE.allowThis(_encryptedReputationOf[tokenId]);
+        FHE.allow(_encryptedReputationOf[tokenId], msg.sender);
+    }
+
+    function subReputation(
+        uint256 tokenId,
+        externalEuint32 valueHandle,
+        bytes calldata inputProof
+    ) external {
+        require(_ownerOf(tokenId) != address(0), "Invalid tokenId");
+        require(ownerOf(tokenId) == msg.sender, "Only owner");
+
+        euint32 v = FHE.fromExternal(valueHandle, inputProof);
+        _encryptedReputationOf[tokenId] = FHE.sub(_encryptedReputationOf[tokenId], v);
+
+        FHE.allowThis(_encryptedReputationOf[tokenId]);
+        FHE.allow(_encryptedReputationOf[tokenId], msg.sender);
+    }
+
+    /// @notice 返回加密的总艺术家数（供前端用户解密或公共解密）
+    function getEncryptedTotalArtists() external view returns (euint32) {
+        return _encryptedTotalArtists;
+    }
+
+    /// @notice 返回某艺术家的加密积分（供前端用户解密）
+    function getEncryptedReputation(uint256 tokenId) external view returns (euint32) {
+        require(_ownerOf(tokenId) != address(0), "Invalid tokenId");
+        return _encryptedReputationOf[tokenId];
+    }
+}
+
+

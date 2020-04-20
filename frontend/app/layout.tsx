@@ -9,15 +9,3 @@ export const metadata = {
 function Navigation() {
   return (
     <nav className="glass-dark fixed top-0 left-0 right-0 z-50 border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center">
-              <span className="text-white font-bold text-xl">A</span>
-            </div>
-            <span className="text-2xl font-display font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent group-hover:from-primary-300 group-hover:to-primary-500 transition-all">
-              ArtistID
-            </span>
-          </Link>
-          
-          <div className="flex items-center space-x-8">

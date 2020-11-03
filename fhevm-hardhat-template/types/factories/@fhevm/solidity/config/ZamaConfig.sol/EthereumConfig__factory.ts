@@ -15,20 +15,3 @@ import type {
 } from "../../../../../@fhevm/solidity/config/ZamaConfig.sol/EthereumConfig";
 
 const _abi = [
-  {
-    inputs: [],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    inputs: [],
-    name: "protocolId",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "pure",
-    type: "function",

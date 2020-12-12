@@ -43,3 +43,48 @@ const _abi = [
   },
 ] as const;
 
+const _bytecode =
+  "0x602c6032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea164736f6c634300081b000a";
+
+type StringsConstructorParams =
+  | [signer?: Signer]
+  | ConstructorParameters<typeof ContractFactory>;
+
+const isSuperArgs = (
+  xs: StringsConstructorParams
+): xs is ConstructorParameters<typeof ContractFactory> => xs.length > 1;
+
+export class Strings__factory extends ContractFactory {
+  constructor(...args: StringsConstructorParams) {
+    if (isSuperArgs(args)) {
+      super(...args);
+    } else {
+      super(_abi, _bytecode, args[0]);
+    }
+  }
+
+  override getDeployTransaction(
+    overrides?: NonPayableOverrides & { from?: string }
+  ): Promise<ContractDeployTransaction> {
+    return super.getDeployTransaction(overrides || {});
+  }
+  override deploy(overrides?: NonPayableOverrides & { from?: string }) {
+    return super.deploy(overrides || {}) as Promise<
+      Strings & {
+        deploymentTransaction(): ContractTransactionResponse;
+      }
+    >;
+  }
+  override connect(runner: ContractRunner | null): Strings__factory {
+    return super.connect(runner) as Strings__factory;
+  }
+
+  static readonly bytecode = _bytecode;
+  static readonly abi = _abi;
+  static createInterface(): StringsInterface {
+    return new Interface(_abi) as StringsInterface;
+  }
+  static connect(address: string, runner?: ContractRunner | null): Strings {
+    return new Contract(address, _abi, runner) as unknown as Strings;
+  }
+}

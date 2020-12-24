@@ -25,31 +25,3 @@ contract ArtistID is ERC721, Ownable, SepoliaConfig {
     /// @dev tokenId -> profile
     mapping(uint256 => ArtistProfile) internal _profiles;
 
-    /// @dev 全局计数：使用 FHE 加密存储，演示链上同态运算（如注册数、验证通过次数等）
-    euint32 private _encryptedTotalArtists;
-
-    /// @dev 每位艺术家一个“加密积分”示例（如认证强度），展示 allow/解密与加法
-    mapping(uint256 => euint32) private _encryptedReputationOf;
-
-    uint256 public totalArtists; // 明文计数（辅助索引）
-
-    event ArtistRegistered(address indexed artist, uint256 tokenId);
-
-    constructor() ERC721("ArtistID", "AID") Ownable(msg.sender) {}
-
-    // ------------------------------------------------------------
-    // 注册与资料
-    // ------------------------------------------------------------
-    function registerArtist(
-        string memory name_,
-        string memory bio_,
-        string memory portfolioURI_,
-        string memory category_
-    ) external returns (uint256 tokenId) {
-        require(!registered[msg.sender], "Already registered");
-
-        tokenId = ++totalArtists;
-        registered[msg.sender] = true;
-        tokenIdOf[msg.sender] = tokenId;
-
-        _safeMint(msg.sender, tokenId);

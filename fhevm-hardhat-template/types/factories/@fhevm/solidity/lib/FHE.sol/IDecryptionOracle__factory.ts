@@ -10,3 +10,39 @@ import type {
 
 const _abi = [
   {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "requestID",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes32[]",
+        name: "ctsHandles",
+        type: "bytes32[]",
+      },
+      {
+        internalType: "bytes4",
+        name: "callbackSelector",
+        type: "bytes4",
+      },
+    ],
+    name: "requestDecryption",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+] as const;
+
+export class IDecryptionOracle__factory {
+  static readonly abi = _abi;
+  static createInterface(): IDecryptionOracleInterface {
+    return new Interface(_abi) as IDecryptionOracleInterface;
+  }
+  static connect(
+    address: string,
+    runner?: ContractRunner | null
+  ): IDecryptionOracle {
+    return new Contract(address, _abi, runner) as unknown as IDecryptionOracle;
+  }
+}

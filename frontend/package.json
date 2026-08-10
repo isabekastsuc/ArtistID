@@ -6,3 +6,29 @@
   "scripts": {
     "clean": "rimraf .next",
     "dev": "npm run genabi && next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "genabi": "node ./scripts/genabi.mjs",
+    "export": "next build"
+  },
+  "dependencies": {
+    "@zama-fhe/relayer-sdk": "0.2.0",
+    "ethers": "^6.13.4",
+    "idb": "^8.0.3",
+    "next": "^15.4.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "framer-motion": "^11.15.0"
+  },
+  "devDependencies": {
+    "@fhevm/mock-utils": "0.1.0",
+    "@types/react": "19.2.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.35",
+    "autoprefixer": "^10.4.17",
+    "@types/node": "^20.11.5",
+    "@types/react-dom": "^19.0.0"
+  }
+}

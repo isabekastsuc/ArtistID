@@ -7,3 +7,13 @@ export class RelayerSDKLoader {
       const script = document.createElement("script");
       script.src = SDK_CDN_URL;
       script.type = "text/javascript";
+      script.async = true;
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error("Failed to load Relayer SDK"));
+      document.head.appendChild(script);
+    });
+  }
+}
+
+
+

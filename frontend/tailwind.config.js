@@ -17,3 +17,23 @@ module.exports = {
           600: '#7c3aed',
           700: '#6d28d9',
           800: '#5b21b6',
+          900: '#4c1d95',
+        },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-artistic': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Poppins', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+}
+
+

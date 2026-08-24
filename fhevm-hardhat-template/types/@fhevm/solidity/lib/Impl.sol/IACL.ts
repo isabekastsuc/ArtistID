@@ -93,3 +93,98 @@ export interface IACL extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEventLog<TCEvent>>>;
 
+  on<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  on<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+
+  once<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  once<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+
+  listeners<TCEvent extends TypedContractEvent>(
+    event: TCEvent
+  ): Promise<Array<TypedListener<TCEvent>>>;
+  listeners(eventName?: string): Promise<Array<Listener>>;
+  removeAllListeners<TCEvent extends TypedContractEvent>(
+    event?: TCEvent
+  ): Promise<this>;
+
+  allow: TypedContractMethod<
+    [handle: BytesLike, account: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+
+  allowForDecryption: TypedContractMethod<
+    [handlesList: BytesLike[]],
+    [void],
+    "nonpayable"
+  >;
+
+  allowTransient: TypedContractMethod<
+    [ciphertext: BytesLike, account: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+
+  cleanTransientStorage: TypedContractMethod<[], [void], "nonpayable">;
+
+  isAllowed: TypedContractMethod<
+    [handle: BytesLike, account: AddressLike],
+    [boolean],
+    "view"
+  >;
+
+  isAllowedForDecryption: TypedContractMethod<
+    [handle: BytesLike],
+    [boolean],
+    "view"
+  >;
+
+  getFunction<T extends ContractMethod = ContractMethod>(
+    key: string | FunctionFragment
+  ): T;
+
+  getFunction(
+    nameOrSignature: "allow"
+  ): TypedContractMethod<
+    [handle: BytesLike, account: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "allowForDecryption"
+  ): TypedContractMethod<[handlesList: BytesLike[]], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "allowTransient"
+  ): TypedContractMethod<
+    [ciphertext: BytesLike, account: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "cleanTransientStorage"
+  ): TypedContractMethod<[], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "isAllowed"
+  ): TypedContractMethod<
+    [handle: BytesLike, account: AddressLike],
+    [boolean],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "isAllowedForDecryption"
+  ): TypedContractMethod<[handle: BytesLike], [boolean], "view">;
+
+  filters: {};
+}

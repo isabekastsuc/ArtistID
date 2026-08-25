@@ -403,3 +403,408 @@ const _abi = [
     outputs: [
       {
         internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "lhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes32",
+        name: "rhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes1",
+        name: "scalarByte",
+        type: "bytes1",
+      },
+    ],
+    name: "fheMul",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "lhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes32",
+        name: "rhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes1",
+        name: "scalarByte",
+        type: "bytes1",
+      },
+    ],
+    name: "fheNe",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "ct",
+        type: "bytes32",
+      },
+    ],
+    name: "fheNeg",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "ct",
+        type: "bytes32",
+      },
+    ],
+    name: "fheNot",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum FheType",
+        name: "randType",
+        type: "uint8",
+      },
+    ],
+    name: "fheRand",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "upperBound",
+        type: "uint256",
+      },
+      {
+        internalType: "enum FheType",
+        name: "randType",
+        type: "uint8",
+      },
+    ],
+    name: "fheRandBounded",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "lhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes32",
+        name: "rhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes1",
+        name: "scalarByte",
+        type: "bytes1",
+      },
+    ],
+    name: "fheRem",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "lhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes32",
+        name: "rhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes1",
+        name: "scalarByte",
+        type: "bytes1",
+      },
+    ],
+    name: "fheRotl",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "lhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes32",
+        name: "rhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes1",
+        name: "scalarByte",
+        type: "bytes1",
+      },
+    ],
+    name: "fheRotr",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "lhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes32",
+        name: "rhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes1",
+        name: "scalarByte",
+        type: "bytes1",
+      },
+    ],
+    name: "fheShl",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "lhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes32",
+        name: "rhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes1",
+        name: "scalarByte",
+        type: "bytes1",
+      },
+    ],
+    name: "fheShr",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "lhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes32",
+        name: "rhs",
+        type: "bytes32",
+      },
+      {
+        internalType: "bytes1",
+        name: "scalarByte",
+        type: "bytes1",
+      },
+    ],
+    name: "fheSub",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getInputVerifierAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "ct",
+        type: "uint256",
+      },
+      {
+        internalType: "enum FheType",
+        name: "toType",
+        type: "uint8",
+      },
+    ],
+    name: "trivialEncrypt",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "inputHandle",
+        type: "bytes32",
+      },
+      {
+        internalType: "address",
+        name: "callerAddress",
+        type: "address",
+      },
+      {
+        internalType: "bytes",
+        name: "inputProof",
+        type: "bytes",
+      },
+      {
+        internalType: "enum FheType",
+        name: "inputType",
+        type: "uint8",
+      },
+    ],
+    name: "verifyCiphertext",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "result",
+        type: "bytes32",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+] as const;
+
+export class IFHEVMExecutor__factory {
+  static readonly abi = _abi;
+  static createInterface(): IFHEVMExecutorInterface {
+    return new Interface(_abi) as IFHEVMExecutorInterface;
+  }
+  static connect(
+    address: string,
+    runner?: ContractRunner | null
+  ): IFHEVMExecutor {
+    return new Contract(address, _abi, runner) as unknown as IFHEVMExecutor;
+  }
+}

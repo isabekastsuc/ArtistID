@@ -23,11 +23,21 @@ function gen() {
       const j = readJson(f);
       addressMap[net] = {
         address: j.address,
-        chainId: j.chainId,
+        chainId: Number(readFileSync(resolve(hhDeployments, net, ".chainId"), "utf8").trim()),
         chainName: net,
       };
+      if (!Array.isArray(j.abi) || j.abi.length === 0) {
+        throw new Error(`deployment ${net} has no ABI: ${f}`);
+      }
       abi = j.abi;
-    } catch {}
+    } catch (err) {
+      if (err && err.code === "ENOENT") continue;
+      throw err;
+    }
+  }
+
+  if (!abi) {
+    throw new Error(`no ArtistID deployment found under ${hhDeployments}`);
   }
 
   mkdirSync(dirname(outAbi), { recursive: true });

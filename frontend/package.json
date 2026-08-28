@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rimraf .next",
     "dev": "npm run genabi && next dev --turbopack",
+    "prebuild": "node ./scripts/genabi.mjs",
     "build": "next build",
     "start": "next start",
     "genabi": "node ./scripts/genabi.mjs",

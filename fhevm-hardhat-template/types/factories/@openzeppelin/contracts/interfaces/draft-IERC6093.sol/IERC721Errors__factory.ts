@@ -62,3 +62,67 @@ const _abi = [
       {
         internalType: "address",
         name: "operator",
+        type: "address",
+      },
+    ],
+    name: "ERC721InvalidOperator",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "owner",
+        type: "address",
+      },
+    ],
+    name: "ERC721InvalidOwner",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+    ],
+    name: "ERC721InvalidReceiver",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "sender",
+        type: "address",
+      },
+    ],
+    name: "ERC721InvalidSender",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "ERC721NonexistentToken",
+    type: "error",
+  },
+] as const;
+
+export class IERC721Errors__factory {
+  static readonly abi = _abi;
+  static createInterface(): IERC721ErrorsInterface {
+    return new Interface(_abi) as IERC721ErrorsInterface;
+  }
+  static connect(
+    address: string,
+    runner?: ContractRunner | null
+  ): IERC721Errors {
+    return new Contract(address, _abi, runner) as unknown as IERC721Errors;
+  }
+}

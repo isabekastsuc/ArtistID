@@ -8,3 +8,25 @@ import type {
   IInputVerifierInterface,
 } from "../../../../../@fhevm/solidity/lib/Impl.sol/IInputVerifier";
 
+const _abi = [
+  {
+    inputs: [],
+    name: "cleanTransientStorage",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+] as const;
+
+export class IInputVerifier__factory {
+  static readonly abi = _abi;
+  static createInterface(): IInputVerifierInterface {
+    return new Interface(_abi) as IInputVerifierInterface;
+  }
+  static connect(
+    address: string,
+    runner?: ContractRunner | null
+  ): IInputVerifier {
+    return new Contract(address, _abi, runner) as unknown as IInputVerifier;
+  }
+}

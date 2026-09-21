@@ -57,3 +57,62 @@ const _abi = [
     ],
     name: "SafeCastOverflowedUintDowncast",
     type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "SafeCastOverflowedUintToInt",
+    type: "error",
+  },
+] as const;
+
+const _bytecode =
+  "0x602c6032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea164736f6c634300081b000a";
+
+type SafeCastConstructorParams =
+  | [signer?: Signer]
+  | ConstructorParameters<typeof ContractFactory>;
+
+const isSuperArgs = (
+  xs: SafeCastConstructorParams
+): xs is ConstructorParameters<typeof ContractFactory> => xs.length > 1;
+
+export class SafeCast__factory extends ContractFactory {
+  constructor(...args: SafeCastConstructorParams) {
+    if (isSuperArgs(args)) {
+      super(...args);
+    } else {
+      super(_abi, _bytecode, args[0]);
+    }
+  }
+
+  override getDeployTransaction(
+    overrides?: NonPayableOverrides & { from?: string }
+  ): Promise<ContractDeployTransaction> {
+    return super.getDeployTransaction(overrides || {});
+  }
+  override deploy(overrides?: NonPayableOverrides & { from?: string }) {
+    return super.deploy(overrides || {}) as Promise<
+      SafeCast & {
+        deploymentTransaction(): ContractTransactionResponse;
+      }
+    >;
+  }
+  override connect(runner: ContractRunner | null): SafeCast__factory {
+    return super.connect(runner) as SafeCast__factory;
+  }
+
+  static readonly bytecode = _bytecode;
+  static readonly abi = _abi;
+  static createInterface(): SafeCastInterface {
+    return new Interface(_abi) as SafeCastInterface;
+  }
+  static connect(address: string, runner?: ContractRunner | null): SafeCast {
+    return new Contract(address, _abi, runner) as unknown as SafeCast;
+  }
+}

@@ -27,7 +27,10 @@ export function useArtistID(params: { provider?: ethers.Eip1193Provider | string
 
   const register = useCallback(async (name: string, bio: string, portfolioURI: string, category: string) => {
     if (!artistID || !provider) return;
-    const signer = typeof provider === "string" ? (await new ethers.BrowserProvider(provider).getSigner()) : await new ethers.BrowserProvider(provider).getSigner();
+    if (typeof provider === "string") {
+      throw new Error("a wallet signer is required for this operation - an RPC URL cannot sign");
+    }
+    const signer = await new ethers.BrowserProvider(provider).getSigner();
     const contract = artistID.connect(signer);
     const tx = await contract.registerArtist(name, bio, portfolioURI, category);
     setMessage(`tx=${tx.hash}`);
@@ -94,9 +97,10 @@ export function useArtistID(params: { provider?: ethers.Eip1193Provider | string
     if (!addr) return;
     const instance = await createFhevmInstance(provider);
 
-    const signer = typeof provider === "string"
-      ? (await new ethers.BrowserProvider(provider).getSigner())
-      : await new ethers.BrowserProvider(provider).getSigner();
+    if (typeof provider === "string") {
+      throw new Error("a wallet signer is required for this operation - an RPC URL cannot sign");
+    }
+    const signer = await new ethers.BrowserProvider(provider).getSigner();
 
     const contract = artistID.connect(signer);
     const userAddress = await signer.getAddress();
@@ -123,9 +127,10 @@ export function useArtistID(params: { provider?: ethers.Eip1193Provider | string
     const addr = (ArtistIDAddresses as any)[net!]?.address as `0x${string}`;
     if (!addr || !repHandle) return undefined;
     const instance = await createFhevmInstance(provider);
-    const signer = typeof provider === "string"
-      ? (await new ethers.BrowserProvider(provider).getSigner())
-      : await new ethers.BrowserProvider(provider).getSigner();
+    if (typeof provider === "string") {
+      throw new Error("a wallet signer is required for this operation - an RPC URL cannot sign");
+    }
+    const signer = await new ethers.BrowserProvider(provider).getSigner();
     const userAddress = await signer.getAddress();
 
     const { publicKey, privateKey } = instance.generateKeypair();
@@ -152,9 +157,10 @@ export function useArtistID(params: { provider?: ethers.Eip1193Provider | string
     const addr = (ArtistIDAddresses as any)[net!]?.address as `0x${string}`;
     if (!addr) return undefined;
     const instance = await createFhevmInstance(provider);
-    const signer = typeof provider === "string"
-      ? (await new ethers.BrowserProvider(provider).getSigner())
-      : await new ethers.BrowserProvider(provider).getSigner();
+    if (typeof provider === "string") {
+      throw new Error("a wallet signer is required for this operation - an RPC URL cannot sign");
+    }
+    const signer = await new ethers.BrowserProvider(provider).getSigner();
     const userAddress = await signer.getAddress();
 
     // 直接读取最新的加密句柄，避免异步 setState 延迟

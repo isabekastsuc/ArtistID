@@ -27,10 +27,17 @@ export default function Register() {
 
   const { message, register } = useArtistID({ provider, chainId });
 
+  const [error, setError] = useState<string | undefined>(undefined);
+
   const handleSubmit = async () => {
-    await register(name, bio, portfolioURI, category);
-    setShowSuccess(true);
-    setTimeout(() => setShowSuccess(false), 5000);
+    setError(undefined);
+    try {
+      await register(name, bio, portfolioURI, category);
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 5000);
+    } catch (e: any) {
+      setError(e?.shortMessage || e?.message || "registration failed");
+    }
   };
 
   const onFileSelected = async (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -14,7 +14,7 @@
   "dependencies": {
     "@fhevm/solidity": "^0.8.0",
     "@openzeppelin/contracts": "^5.0.2",
-    "@zama-fhe/oracle-solidity": "^0.1.0"
+    "@zama-fhe/oracle-solidity": "^0.2.0"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.8",

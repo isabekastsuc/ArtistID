@@ -14,7 +14,7 @@
   "dependencies": {
     "@zama-fhe/relayer-sdk": "0.2.0",
     "ethers": "^6.13.4",
-    "idb": "^8.0.3",
+    "idb": "^8.0.4",
     "next": "^15.4.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

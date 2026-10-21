@@ -27,7 +27,7 @@ export function useArtistID(params: { provider?: ethers.Eip1193Provider | string
 
   const register = useCallback(async (name: string, bio: string, portfolioURI: string, category: string) => {
     if (!artistID || !provider) return;
-    const signer = typeof provider === "string" ? new ethers.Wallet(ethers.Wallet.createRandom().privateKey, new ethers.JsonRpcProvider(provider)) : await new ethers.BrowserProvider(provider).getSigner();
+    const signer = typeof provider === "string" ? (await new ethers.BrowserProvider(provider).getSigner()) : await new ethers.BrowserProvider(provider).getSigner();
     const contract = artistID.connect(signer);
     const tx = await contract.registerArtist(name, bio, portfolioURI, category);
     setMessage(`tx=${tx.hash}`);
@@ -95,7 +95,7 @@ export function useArtistID(params: { provider?: ethers.Eip1193Provider | string
     const instance = await createFhevmInstance(provider);
 
     const signer = typeof provider === "string"
-      ? new ethers.Wallet(ethers.Wallet.createRandom().privateKey, new ethers.JsonRpcProvider(provider))
+      ? (await new ethers.BrowserProvider(provider).getSigner())
       : await new ethers.BrowserProvider(provider).getSigner();
 
     const contract = artistID.connect(signer);
@@ -114,6 +114,8 @@ export function useArtistID(params: { provider?: ethers.Eip1193Provider | string
       setMessage(`sub tx=${tx.hash}`);
       await tx.wait();
     }
+    const fresh = await contract.getEncryptedReputation(tokenId);
+    setRepHandle(fresh as string);
   }, [artistID, provider, net]);
 
   const decryptReputation = useCallback(async (user: string) => {
@@ -122,7 +124,7 @@ export function useArtistID(params: { provider?: ethers.Eip1193Provider | string
     if (!addr || !repHandle) return undefined;
     const instance = await createFhevmInstance(provider);
     const signer = typeof provider === "string"
-      ? new ethers.Wallet(ethers.Wallet.createRandom().privateKey, new ethers.JsonRpcProvider(provider))
+      ? (await new ethers.BrowserProvider(provider).getSigner())
       : await new ethers.BrowserProvider(provider).getSigner();
     const userAddress = await signer.getAddress();
 
@@ -151,7 +153,7 @@ export function useArtistID(params: { provider?: ethers.Eip1193Provider | string
     if (!addr) return undefined;
     const instance = await createFhevmInstance(provider);
     const signer = typeof provider === "string"
-      ? new ethers.Wallet(ethers.Wallet.createRandom().privateKey, new ethers.JsonRpcProvider(provider))
+      ? (await new ethers.BrowserProvider(provider).getSigner())
       : await new ethers.BrowserProvider(provider).getSigner();
     const userAddress = await signer.getAddress();
 
